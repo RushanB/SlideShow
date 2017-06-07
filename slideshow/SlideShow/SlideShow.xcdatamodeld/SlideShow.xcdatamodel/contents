@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16E195" minimumToolsVersion="Automatic" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Photo" representedClassName="Photo" syncable="YES">
+        <attribute name="detailsText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="order" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="savedImage" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="titleText" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="slideShow" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SlideShow" inverseName="photos" inverseEntity="SlideShow" syncable="YES"/>
+    </entity>
+    <entity name="SlideShow" representedClassName="SlideShow" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Photo" inverseName="slideShow" inverseEntity="Photo" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="slideShows" inverseEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="email" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="profilePicture" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="slideShows" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SlideShow" inverseName="user" inverseEntity="SlideShow" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Photo" positionX="403" positionY="-36" width="128" height="120"/>
+        <element name="SlideShow" positionX="214" positionY="27" width="128" height="105"/>
+        <element name="User" positionX="-2" positionY="-153" width="128" height="150"/>
+    </elements>
+</model>
